@@ -8,7 +8,8 @@ import { nanoid } from 'nanoid';
 export class App extends Component {
   state = {
   contacts: [],
-  name: ''
+  name: '',
+  number: '',
   }
 
   addContact = contact => {
