@@ -1,7 +1,7 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import PropTypes from 'prop-types';
 
-export const Contacts = ({ contacts }) => {
+export const ContactList = ({ contacts }) => {
   return (
     <ul>
       {contacts.map(({ name, number, id }) => {
@@ -15,7 +15,7 @@ export const Contacts = ({ contacts }) => {
   );
 };
 
-Contacts.propTypes = {
+ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
