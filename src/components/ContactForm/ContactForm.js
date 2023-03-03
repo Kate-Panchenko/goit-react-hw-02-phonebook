@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 // import { ThemeProvider } from 'styled-components';
 // import { theme } from '../Layout';
 import { nanoid } from 'nanoid';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Form, Label, Field, Button } from './ContactForm.styled';
 
 const initialValues = {
   name: '',
@@ -43,15 +44,17 @@ export const ContactForm = ({ onSubmit }) => {
       validationSchema={schema}
     >
       <Form>
-        <label>
+        <Label>
+          Name
           <Field type="text" name="name" id={nanoid()} />
           <ErrorMessage name="name" render={msg => <div>{msg}</div>} />
-        </label>
-        <label>
+        </Label>
+        <Label>
+          Number
           <Field type="tel" name="number" id={nanoid()} />
           <ErrorMessage name="number" render={msg => <div>{msg}</div>} />
-        </label>
-        <button type="submit">Add contact</button>
+        </Label>
+        <Button type="submit">Add contact</Button>
       </Form>
     </Formik>
   );

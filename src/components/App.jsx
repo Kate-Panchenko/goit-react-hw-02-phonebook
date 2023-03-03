@@ -5,7 +5,9 @@ import { ContactForm } from "./ContactForm/ContactForm";
 import { ContactList } from "./ContactList/ContactList";
 import { Filter } from "./Filter/Filter";
 import { nanoid } from 'nanoid';
-
+import { Title } from "./ContactForm/ContactForm.styled";
+import { ThemeProvider } from 'styled-components';
+import { theme } from './Layout';
 
 export class App extends Component {
   state = {
@@ -48,14 +50,16 @@ export class App extends Component {
     const filteredContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(lowerCaseFilter));
     return (
-      <Layout>
-        <GlobalStyle />
-        <h2>Phonebook</h2>
-        <ContactForm onSubmit={this.addContact} />
-        <h2>Contacts</h2>
-        <Filter value={ this.state.filter} onChange={this.contactFilter} />
-        <ContactList contacts={filteredContacts} onClick={this.deleteContact} />
-    </Layout>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <GlobalStyle />
+          <Title>Phonebook</Title>
+          <ContactForm onSubmit={this.addContact} />
+          <Title>Contacts</Title>
+          <Filter value={ this.state.filter} onChange={this.contactFilter} />
+          <ContactList contacts={filteredContacts} onClick={this.deleteContact} />
+        </Layout>
+      </ThemeProvider> 
     )
   }
 }

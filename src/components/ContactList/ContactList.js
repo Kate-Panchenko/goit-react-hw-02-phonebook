@@ -1,22 +1,23 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import PropTypes from 'prop-types';
+import { List, Contact } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onClick }) => {
   return (
-    <ul>
+    <List>
       {contacts.map(({ name, number, id }) => {
         return (
-          <li key={id}>
+          <Contact key={id}>
             <ContactItem
               name={name}
               number={number}
               onClick={onClick}
               id={id}
             />
-          </li>
+          </Contact>
         );
       })}
-    </ul>
+    </List>
   );
 };
 
